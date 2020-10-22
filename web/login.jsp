@@ -8,31 +8,23 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>登录页面</title>
+    <title>录入页面</title>
 </head>
 <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
 </script>
-<script>
-    $(document).ready(function(){
-        $("button").click(function(){
-            $.post("/try/ajax/demo_test_post.php",{
-                    name:"菜鸟教程",
-                    url:"http://www.runoob.com"
-                },
-                function(data,status){
-                    alert("数据: \n" + data + "\n状态: " + status);
-                });
-        });
-    });
-</script>
 <body>
+    <h2>录入学生信息</h2>
     <form action="/TomcatTest" method="post" name=form>
 
-        <span style="font-size: large; ">登录界面</span><br>
+        <span style="font-size: large; ">录入页面</span><br>
 
-        用户名：<input type="text" value="" name="username"><br>
+        学生名：<input type="text" value="" name="name"><br>
 
-        密    码：<input type="text" value="" name="password"><br>
+        性别：<input type="text" value="" name="sex"><br>
+
+        年龄：<input type="text" value="" name="age"><br>
+
+        年级：<input type="text" value="" name="grade"><br>
 
         <input type="submit" value="提交" name="submit">
 
