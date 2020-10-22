@@ -27,4 +27,17 @@
         <!-- 访问的网址 -->
         <url-pattern>/ListServlet</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <!-- 类名 -->
+        <servlet-name>ShowList</servlet-name>
+        <!-- 所在的包 -->
+        <servlet-class>com.WHJ.ShowList</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ShowList</servlet-name>
+        <!-- 访问的网址 -->
+        <url-pattern>/ShowList</url-pattern>
+    </servlet-mapping>
+
 </web-app>

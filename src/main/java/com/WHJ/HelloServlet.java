@@ -26,6 +26,8 @@ public class HelloServlet extends HttpServlet {
         String[] age = parameterMap.get("age");
         String[] grade = parameterMap.get("grade");
 
+
+
         try {
             //1.加载驱动程序
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -35,7 +37,7 @@ public class HelloServlet extends HttpServlet {
             PreparedStatement stmt = conn.prepareStatement("insert into student (name, sex, age, grade) values (?, ?, ?, ?);");
 
             //将性别转换为整数
-            if (sex[0].equals("男")) {
+            if (Integer.parseInt(sex[0]) == 0) {
                 sex[0] = "0";
             } else {
                 sex[0] = "1";

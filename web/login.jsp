@@ -20,7 +20,7 @@
 
         学生名：<input type="text" value="" name="name"><br>
 
-        性别：<input type="text" value="" name="sex"><br>
+        <input id="man" type="radio"  value="0" checked="checked" name="sex" />男<input id="woman" type="radio" value="1"  name="sex"/>女 <br>
 
         年龄：<input type="text" value="" name="age"><br>
 
