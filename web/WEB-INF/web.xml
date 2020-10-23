@@ -34,7 +34,7 @@
         <!-- 类名 -->
         <servlet-name>TestAjax</servlet-name>
         <!-- 所在的包 -->
-        <servlet-class>com.WHJ.servlet.TestAjax</servlet-class>
+        <servlet-class>com.WHJ.servlet.ShowExamList</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>TestAjax</servlet-name>

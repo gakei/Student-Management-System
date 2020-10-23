@@ -1,6 +1,9 @@
 package com.WHJ.servlet;
 
+import com.WHJ.DTO.StudentDTO;
 import com.WHJ.entity.Student;
+import com.WHJ.util.JDBCConnector;
+import com.alibaba.fastjson.JSON;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -11,19 +14,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShowList extends HelloServlet {
-    public static final String URL = "jdbc:mysql://localhost:3306/StuManageSys?useSSL=false&allowPublicKeyRetrieval=true";
-    public static final String USER = "root";
-    public static final String PASSWORD = "root";
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
-            //1.加载驱动程序
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            //2. 获得数据库连接
-            Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
-            //3.操作数据库，实现增删改查
-            PreparedStatement stmt = conn.prepareStatement("select * from StuManageSys.student");
+            PreparedStatement stmt = new JDBCConnector().getPrepareStatement("select * from StuManageSys.student");
 
             ResultSet resultSet = stmt.executeQuery();
             List<Student> list = new ArrayList<>();
@@ -56,8 +50,17 @@ public class ShowList extends HelloServlet {
                 }
                 list.add(student);
             }
-            req.setAttribute("list", list);
-            req.getRequestDispatcher( "webPage/back.jsp").forward(req, resp);
+            StudentDTO studentDTO = new StudentDTO();
+            studentDTO.setCode(0);
+            studentDTO.setMsg("");
+            studentDTO.setCount(7);
+            studentDTO.setData(list);
+
+            String jsonString = JSON.toJSONString(studentDTO);
+            resp.setCharacterEncoding("utf-8");
+            resp.setContentType("application/json;charset=utf-8");
+            /*返回数据*/
+            resp.getWriter().write(jsonString);
         } catch (SQLException | ClassNotFoundException | NumberFormatException e) {
             e.printStackTrace();
         }
