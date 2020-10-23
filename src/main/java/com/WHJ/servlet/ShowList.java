@@ -1,4 +1,4 @@
-package com.WHJ;
+package com.WHJ.servlet;
 
 import com.WHJ.entity.Student;
 
@@ -57,7 +57,7 @@ public class ShowList extends HelloServlet {
                 list.add(student);
             }
             req.setAttribute("list", list);
-            req.getRequestDispatcher( "webPage/showList.jsp").forward(req, resp);
+            req.getRequestDispatcher( "webPage/back.jsp").forward(req, resp);
         } catch (SQLException | ClassNotFoundException | NumberFormatException e) {
             e.printStackTrace();
         }

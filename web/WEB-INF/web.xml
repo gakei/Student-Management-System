@@ -8,7 +8,7 @@
         <!-- 类名 -->
         <servlet-name>HelloServlet</servlet-name>
         <!-- 所在的包 -->
-        <servlet-class>com.WHJ.HelloServlet</servlet-class>
+        <servlet-class>com.WHJ.servlet.HelloServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>HelloServlet</servlet-name>
@@ -18,26 +18,28 @@
 
     <servlet>
         <!-- 类名 -->
-        <servlet-name>ListServlet</servlet-name>
-        <!-- 所在的包 -->
-        <servlet-class>com.WHJ.ListServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>ListServlet</servlet-name>
-        <!-- 访问的网址 -->
-        <url-pattern>/ListServlet</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <!-- 类名 -->
         <servlet-name>ShowList</servlet-name>
         <!-- 所在的包 -->
-        <servlet-class>com.WHJ.ShowList</servlet-class>
+        <servlet-class>com.WHJ.servlet.ShowList</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ShowList</servlet-name>
         <!-- 访问的网址 -->
         <url-pattern>/ShowList</url-pattern>
+    </servlet-mapping>
+
+
+
+    <servlet>
+        <!-- 类名 -->
+        <servlet-name>TestAjax</servlet-name>
+        <!-- 所在的包 -->
+        <servlet-class>com.WHJ.servlet.TestAjax</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TestAjax</servlet-name>
+        <!-- 访问的网址 -->
+        <url-pattern>/TestAjax</url-pattern>
     </servlet-mapping>
 
 </web-app>

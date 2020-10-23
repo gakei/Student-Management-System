@@ -1,11 +1,14 @@
-package com.WHJ;
+package com.WHJ.servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Map;
 
 public class HelloServlet extends HttpServlet {
@@ -25,8 +28,6 @@ public class HelloServlet extends HttpServlet {
         String[] sex = parameterMap.get("sex");
         String[] age = parameterMap.get("age");
         String[] grade = parameterMap.get("grade");
-
-
 
         try {
             //1.加载驱动程序

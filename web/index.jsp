@@ -11,10 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-你好广志。
-<%
-    String   s   =(String)request.getAttribute( "ValueA ");
-    out.print(s);
-%>
+    项目启动成功
 </body>
 </html>
