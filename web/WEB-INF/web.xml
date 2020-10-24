@@ -18,14 +18,14 @@
 
     <servlet>
         <!-- 类名 -->
-        <servlet-name>ShowList</servlet-name>
+        <servlet-name>ShowStudentList</servlet-name>
         <!-- 所在的包 -->
-        <servlet-class>com.WHJ.servlet.ShowList</servlet-class>
+        <servlet-class>com.WHJ.servlet.ShowStudentList</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>ShowList</servlet-name>
+        <servlet-name>ShowStudentList</servlet-name>
         <!-- 访问的网址 -->
-        <url-pattern>/ShowList</url-pattern>
+        <url-pattern>/ShowStudentList</url-pattern>
     </servlet-mapping>
 
 

@@ -6,6 +6,8 @@ public class Student {
     private String sex;
     private int age;
     private String grade;
+    private String classNo;
+    private String dormitoryNo;
 
     public int getId() {
         return id;
@@ -47,14 +49,32 @@ public class Student {
         this.grade = grade;
     }
 
+    public String getClassNo() {
+        return classNo;
+    }
+
+    public void setClassNo(String classNo) {
+        this.classNo = classNo;
+    }
+
+    public String getDormitoryNo() {
+        return dormitoryNo;
+    }
+
+    public void setDormitoryNo(String dormitoryNo) {
+        this.dormitoryNo = dormitoryNo;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", sex=" + sex +
+                ", sex='" + sex + '\'' +
                 ", age=" + age +
-                ", grade=" + grade +
+                ", grade='" + grade + '\'' +
+                ", classNo='" + classNo + '\'' +
+                ", dormitoryNo='" + dormitoryNo + '\'' +
                 '}';
     }
 }

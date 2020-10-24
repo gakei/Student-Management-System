@@ -9,7 +9,8 @@
     <title>layout 后台大布局 - Layui</title>
     <link rel="stylesheet" href="../layui/css/layui.css">
 </head>
-<body class="layui-layout-body" bgcolor="#f0f8ff">
+
+<body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header">
         <div class="layui-logo">学生信息管理系统</div>
@@ -56,7 +57,7 @@
                 <li class="layui-nav-item">
                     <a href="javascript:;">读者信息管理</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;" id="readerList">读者列表</a></dd>
+                        <dd><a href="javascript:;" id="studentList">住宿学生信息列表</a></dd>
                         <dd><a href="javascript:;" id="addReader">添加读者信息</a></dd>
                     </dl>
                 </li>
@@ -69,30 +70,7 @@
     <div class="layui-body">
         <!-- 内容主体区域 -->
         <div style="padding: 15px;" id="result">
-            <div class="layui-btn-group demoTable">
-                <button class="layui-btn" data-type="getCheckData">获取选中行数据</button>
-                <button class="layui-btn" data-type="getCheckLength">获取选中数目</button>
-                <button class="layui-btn" data-type="isAll">验证是否全选</button>
-            </div>
-
-            <table class="layui-table" lay-data="{width: 728, height:330, url:'/ShowList', page:true, id:'idTest'}" lay-filter="demo">
-                <thead>
-                <tr>
-                    <th lay-data="{type:'checkbox', fixed: 'left'}"></th>
-                    <th lay-data="{field:'id', width:80, sort: true, fixed: true}">ID</th>
-                    <th lay-data="{field:'name', width:80}">用户名</th>
-                    <th lay-data="{field:'sex', width:80, sort: true}">性别</th>
-                    <th lay-data="{field:'age', width:80}">年龄</th>
-                    <th lay-data="{field:'grade', width:160, fixed: 'right'}">年级</th>
-                    <th lay-data="{fixed: 'right', width:178, align:'center', toolbar: '#barDemo'}"></th>
-                </tr>
-                </thead>
-            </table>
-            <script type="text/html" id="barDemo">
-                <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
-                <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-                <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
-            </script>
+            <h1>欢迎来到学生宿舍信息后台管理系统</h1>
         </div>
     </div>
 
@@ -106,7 +84,6 @@
     //JavaScript代码区域
     layui.use('element', function(){
         var element = layui.element;
-
     });
 </script>
 
@@ -184,32 +161,6 @@
                 })
         })
     });
-    $(function () {
-        $("#readerList").on("click", function () {
-            /*点击考试列表*/
-            $.get(
-                "<%=application.getContextPath()%>/ShowList",
-                function (data) {
-                    /*console.log(data.id)*/
-                    $("#result").html("");
-                    $.each(data, function (k, v) {//这里的函数参数是键值对的形式，k代表键名，v代表值
-                        $("#result").append(
-                            '<div class="layui-card block">'
-                            + '<div class="layui-card-header">'
-                            +  '序号:'
-                            + data[k].id
-                            + '</div>'
-                            + '<div class="layui-card-body">'
-                            + data[k].name + '<br>'
-                            + data[k].sex + '<br>'
-                            + data[k].age + '<br>'
-                            + data[k].grade + '<br>'
-                            + '</div>'
-                            + '</div>')
-                    });
-                })
-        })
-    });
     //添加读者信息
     $(function () {
         $("#addReader").on("click", function () {
@@ -234,6 +185,13 @@
                 "    </form>");
         })
     })
+
+    $(function () {
+        $("#studentList").on("click", function () {
+            $("#result").html("");
+            $("#result").append("<iframe src=\"StudentList.jsp\" width=\"100%\" height=\"100%\" frameborder=\"0\" scrolling=\"no\"></iframe>")
+        })
+    });
 </script>
 
 </body>
