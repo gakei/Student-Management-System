@@ -166,7 +166,7 @@
         $("#addReader").on("click", function () {
             $("#result").html("");
             $("#result").append("<h2>录入学生信息</h2>\n" +
-                "    <form action=\"/TomcatTest\" method=\"post\" name=form>\n" +
+                "    <form action=\"/HelloServlet\" method=\"post\" name=form>\n" +
                 "\n" +
                 "        <span style=\"font-size: large; \">录入页面</span><br>\n" +
                 "\n" +

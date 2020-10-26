@@ -25,7 +25,7 @@
             <button class="layui-btn" data-type="isAll">验证是否全选</button>
         </div>
 
-        <table class="layui-table" lay-data="{width: 775, height:500, url:'/ShowStudentList', page:true, id:'idTest'}" lay-filter="demo">
+        <table class="layui-table" lay-data="{width: 800, height:500, url:'/ShowStudentList', page:true, id:'idTest'}" lay-filter="demo">
             <thead>
             <tr>
                 <th lay-data="{type:'checkbox', fixed: 'left'}"></th>
@@ -75,7 +75,31 @@
                     layer.close(index);
                 });
             } else if(obj.event === 'edit'){
-                layer.alert('编辑行：<br>'+ JSON.stringify(data))
+                layer.open({
+                    type: 2,
+                    content: './detail.jsp',
+                    fixed: true,
+                    title: false,
+                    shadeClose:false,
+                    area: ['660px', '400px'],
+                    btn: ['确认', '取消'],
+                    yes: function(index, layero){
+                        layer.closeAll();
+                    },
+                    no: function () {
+                    },
+                    success:function(layero, index){
+                        var body=layer.getChildFrame('body',index);//少了这个是不能从父页面向子页面传值的
+                        //获取子页面的元素，进行数据渲染
+                        body.contents().find("#id").val(data.id);
+                        body.contents().find("#name").val(data.name);
+                        body.contents().find("#sex").val(data.sex);
+                        body.contents().find("#age").val(data.age);
+                        body.contents().find("#grade").val(data.grade);
+                        body.contents().find("#classNo").val(data.classNo);
+                        body.contents().find("#dormitoryNo").val(data.dormitoryNo);
+                    }
+                });
             }
         });
 

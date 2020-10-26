@@ -13,7 +13,7 @@
     <servlet-mapping>
         <servlet-name>HelloServlet</servlet-name>
         <!-- 访问的网址 -->
-        <url-pattern>/TomcatTest</url-pattern>
+        <url-pattern>/HelloServlet</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -31,15 +31,27 @@
 
 
     <servlet>
-        <!-- 类名 -->
-        <servlet-name>TestAjax</servlet-name>
-        <!-- 所在的包 -->
-        <servlet-class>com.WHJ.servlet.ShowExamList</servlet-class>
+    <!-- 类名 -->
+    <servlet-name>TestAjax</servlet-name>
+    <!-- 所在的包 -->
+    <servlet-class>com.WHJ.servlet.ShowExamList</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>TestAjax</servlet-name>
         <!-- 访问的网址 -->
         <url-pattern>/TestAjax</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <!-- 类名 -->
+        <servlet-name>EditStudentInfo</servlet-name>
+        <!-- 所在的包 -->
+        <servlet-class>com.WHJ.servlet.EditStudentInfo</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EditStudentInfo</servlet-name>
+        <!-- 访问的网址 -->
+        <url-pattern>/EditStudentInfo</url-pattern>
     </servlet-mapping>
 
 </web-app>
