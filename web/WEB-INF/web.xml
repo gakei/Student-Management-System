@@ -6,14 +6,14 @@
 
     <servlet>
         <!-- 类名 -->
-        <servlet-name>HelloServlet</servlet-name>
+        <servlet-name>InputStuInfo</servlet-name>
         <!-- 所在的包 -->
-        <servlet-class>com.WHJ.servlet.HelloServlet</servlet-class>
+        <servlet-class>com.WHJ.servlet.InputStuInfo</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>HelloServlet</servlet-name>
+        <servlet-name>InputStuInfo</servlet-name>
         <!-- 访问的网址 -->
-        <url-pattern>/HelloServlet</url-pattern>
+        <url-pattern>/InputStuInfo</url-pattern>
     </servlet-mapping>
 
     <servlet>

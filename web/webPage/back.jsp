@@ -48,17 +48,17 @@
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree"  lay-filter="test">
                 <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:;">成绩统计分析</a>
+                    <a class="" href="javascript:;">宿舍信息管理</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;" id="examinationList">考试列表</a></dd>
-                        <dd><a href="javascript:;">总排名</a></dd>
+                        <dd><a href="javascript:;" id="dormitoryList">宿舍列表</a></dd>
+                        <dd><a href="javascript:;" id="InputStuInfo">录入学生信息</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
-                    <a href="javascript:;">读者信息管理</a>
+                    <a href="javascript:;">学生住宿信息管理</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;" id="studentList">住宿学生信息列表</a></dd>
-                        <dd><a href="javascript:;" id="addReader">添加读者信息</a></dd>
+                        <dd><a href="javascript:;" id="studentList">学生信息列表</a></dd>
+                        <dd><a href="javascript:;" id="addReader">添加学生信息</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item"><a href="">云市场</a></li>
@@ -136,29 +136,9 @@
 <script type="text/javascript" src="../js/jquery-3.4.1.min.js"></script>
 <script>
     $(function () {
-        $("#examinationList").on("click", function () {
-            /*点击考试列表*/
-            $.get(
-                "<%=application.getContextPath()%>/TestAjax",
-                function (data) {
-                    /*console.log(data.id)*/
-                    $("#result").html("");
-                    $.each(data, function (k, v) {//这里的函数参数是键值对的形式，k代表键名，v代表值
-                        $("#result").append(
-                            '<div class="layui-card block">'
-                            + '<div class="layui-card-header">'
-                            +  '序号:'
-                            + data[k].id
-                            + '</div>'
-                            + '<div class="layui-card-body">'
-                            + data[k].examName + '<br>'
-                            + data[k].examTime + '<br>'
-                            + data[k].chargeTeacher + '<br>'
-                            + data[k].examPlace + '<br>'
-                            + '</div>'
-                            + '</div>')
-                    });
-                })
+        $("#InputStuInfo").on("click", function () {
+            $("#result").html("");
+            $("#result").append("<iframe src=\"inputStuInfo.jsp\" width=\"100%\" height=\"100%\" frameborder=\"0\" scrolling=\"no\"></iframe>");
         })
     });
     //添加读者信息

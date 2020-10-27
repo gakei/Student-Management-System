@@ -4,7 +4,6 @@ import com.WHJ.DTO.StudentDTO;
 import com.WHJ.entity.Student;
 import com.WHJ.util.JDBCConnector;
 import com.alibaba.fastjson.JSON;
-import jdk.net.SocketFlow;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +13,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShowStudentList extends HelloServlet {
+public class ShowStudentList extends InputStuInfo {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {

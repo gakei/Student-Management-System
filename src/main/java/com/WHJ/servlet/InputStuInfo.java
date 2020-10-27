@@ -1,5 +1,7 @@
 package com.WHJ.servlet;
 
+import com.WHJ.util.JDBCConnector;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Map;
 
-public class HelloServlet extends HttpServlet {
+public class InputStuInfo extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private final String successText = "登陆成功";
     private final String failText = "密码或用户名错误，登录失败";
@@ -23,32 +25,35 @@ public class HelloServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
         Map<String, String[]> parameterMap = req.getParameterMap();
         String[] name = parameterMap.get("name");
         String[] sex = parameterMap.get("sex");
         String[] age = parameterMap.get("age");
         String[] grade = parameterMap.get("grade");
+        String[] classNo = parameterMap.get("classNo");
+        String[] buildingNo = parameterMap.get("buildingNo");
+        String[] dormitoryNo = parameterMap.get("dormitoryNo");
 
+        if (sex[0].equals("男")) {
+            sex[0] = "0";
+        } else {
+            sex[0] = "1";
+        }
+        //拼接楼栋号和宿舍号
+        dormitoryNo[0] = buildingNo[0] + dormitoryNo[0];
+
+        String sql = "insert into student (name, sex, age, grade, class_no, dormitory_no) values (?, ?, ?, ?, ?, ?);";
         try {
-            //1.加载驱动程序
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            //2. 获得数据库连接
-            Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
-            //3.操作数据库，实现增删改查
-            PreparedStatement stmt = conn.prepareStatement("insert into student (name, sex, age, grade) values (?, ?, ?, ?);");
-
-            //将性别转换为整数
-            if (Integer.parseInt(sex[0]) == 0) {
-                sex[0] = "0";
-            } else {
-                sex[0] = "1";
-            }
-
-            stmt.setString(1, name[0]);
-            stmt.setInt(2, Integer.parseInt(sex[0]));
-            stmt.setInt(3, Integer.parseInt(age[0]));
-            stmt.setInt(4, Integer.parseInt(grade[0]));
-            int rs = stmt.executeUpdate();
+            JDBCConnector jdbcConnector = new JDBCConnector();
+            PreparedStatement prepareStatement = jdbcConnector.getPrepareStatement(sql);
+            prepareStatement.setString(1, name[0]);
+            prepareStatement.setInt(2, Integer.parseInt(sex[0]));
+            prepareStatement.setInt(3, Integer.parseInt(age[0]));
+            prepareStatement.setInt(4, Integer.parseInt(grade[0]));
+            prepareStatement.setString(5, classNo[0]);
+            prepareStatement.setString(6, dormitoryNo[0]);
+            int rs = prepareStatement.executeUpdate();
             if (rs != 0) {
                 req.setAttribute( "isSuccess ", true);
                 req.getRequestDispatcher( "/success.jsp").forward(req, resp);
