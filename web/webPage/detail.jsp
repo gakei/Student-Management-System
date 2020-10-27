@@ -138,6 +138,12 @@
                         alert("编辑成功");
                         layer.closeAll();
                         window.parent.location.reload();
+                    } else if (data.responseCode === 2) {
+                        alert("服务器程序出错，请稍后再试");
+                        layer.closeAll();
+                        window.parent.location.reload();
+                    } else {
+                        alert("您的输入有误，请重新输入");
                     }
                 }
             );

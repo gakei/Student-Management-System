@@ -54,4 +54,16 @@
         <url-pattern>/EditStudentInfo</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <!-- 类名 -->
+        <servlet-name>DeleteStuInfo</servlet-name>
+        <!-- 所在的包 -->
+        <servlet-class>com.WHJ.servlet.DeleteStuInfo</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteStuInfo</servlet-name>
+        <!-- 访问的网址 -->
+        <url-pattern>/DeleteStuInfo</url-pattern>
+    </servlet-mapping>
+
 </web-app>

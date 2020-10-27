@@ -71,6 +71,21 @@
                 layer.msg('ID：'+ data.id + ' 的查看操作');
             } else if(obj.event === 'del'){
                 layer.confirm('真的删除行么', function(index){
+                    console.log(data.id);
+                    $.post(
+                        '/DeleteStuInfo',
+                        {
+                            id: data.id,
+                        },
+                        function(data, status) {
+                            if (data.responseCode === 1) {
+                                alert("删除成功");
+                            }
+                            if (data.responseCode === 2) {
+                                alert("服务器冒烟啦，请等待攻城狮修复！")
+                            }
+                        }
+                    );
                     obj.del();
                     layer.close(index);
                 });
