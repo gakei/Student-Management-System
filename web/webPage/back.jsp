@@ -39,7 +39,7 @@
                     <dd><a href="">安全设置</a></dd>
                 </dl>
             </li>
-            <li class="layui-nav-item"><a href="">退了</a></li>
+            <li class="layui-nav-item"><a href="" id="Logout">退了</a></li>
         </ul>
     </div>
 
@@ -141,36 +141,28 @@
             $("#result").append("<iframe src=\"inputStuInfo.jsp\" width=\"100%\" height=\"100%\" frameborder=\"0\" scrolling=\"no\"></iframe>");
         })
     });
-    //添加读者信息
-    $(function () {
-        $("#addReader").on("click", function () {
-            $("#result").html("");
-            $("#result").append("<h2>录入学生信息</h2>\n" +
-                "    <form action=\"/HelloServlet\" method=\"post\" name=form>\n" +
-                "\n" +
-                "        <span style=\"font-size: large; \">录入页面</span><br>\n" +
-                "\n" +
-                "        学生名：<input type=\"text\" value=\"\" name=\"name\"><br>\n" +
-                "\n" +
-                "        <input id=\"man\" type=\"radio\"  value=\"0\" checked=\"checked\" name=\"sex\" />男<input id=\"woman\" type=\"radio\" value=\"1\"  name=\"sex\"/>女 <br>\n" +
-                "\n" +
-                "        年龄：<input type=\"text\" value=\"\" name=\"age\"><br>\n" +
-                "\n" +
-                "        年级：<input type=\"text\" value=\"\" name=\"grade\"><br>\n" +
-                "\n" +
-                "        <input type=\"submit\" value=\"提交\" name=\"submit\">\n" +
-                "\n" +
-                "        <input type=\"reset\" value=\"重置\">\n" +
-                "\n" +
-                "    </form>");
-        })
-    })
-
     $(function () {
         $("#studentList").on("click", function () {
             $("#result").html("");
             $("#result").append("<iframe src=\"StudentList.jsp\" width=\"100%\" height=\"100%\" frameborder=\"0\" scrolling=\"no\"></iframe>")
         })
+    });
+    $("#Logout").on("click", function () {
+        $.ajax({
+            url: "/Logout",
+            type: "post",
+            async: false,
+            data: {
+                LogoutFlag: "1"
+            },
+            success: function (result) {
+                alert("登出成功！");
+                console.log(result);
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
     });
 </script>
 

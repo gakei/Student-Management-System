@@ -4,6 +4,15 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
+    <filter>
+        <filter-name>password</filter-name>
+        <filter-class>com.WHJ.filter.PasswordFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>password</filter-name>
+        <url-pattern>*.jsp</url-pattern>
+    </filter-mapping>
+
     <servlet>
         <!-- 类名 -->
         <servlet-name>InputStuInfo</servlet-name>
@@ -25,7 +34,7 @@
     <servlet-mapping>
         <servlet-name>ShowStudentList</servlet-name>
         <!-- 访问的网址 -->
-        <url-pattern>/ShowStudentList</url-pattern>
+            <url-pattern>/ShowStudentList</url-pattern>
     </servlet-mapping>
 
 
@@ -64,6 +73,18 @@
         <servlet-name>DeleteStuInfo</servlet-name>
         <!-- 访问的网址 -->
         <url-pattern>/DeleteStuInfo</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <!-- 类名 -->
+        <servlet-name>Logout</servlet-name>
+        <!-- 所在的包 -->
+        <servlet-class>com.WHJ.servlet.Logout</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Logout</servlet-name>
+        <!-- 访问的网址 -->
+        <url-pattern>/Logout</url-pattern>
     </servlet-mapping>
 
 </web-app>
