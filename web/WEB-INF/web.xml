@@ -87,4 +87,16 @@
         <url-pattern>/Logout</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <!-- 类名 -->
+        <servlet-name>DormitoryList</servlet-name>
+        <!-- 所在的包 -->
+        <servlet-class>com.WHJ.servlet.DormitoryList</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DormitoryList</servlet-name>
+        <!-- 访问的网址 -->
+        <url-pattern>/DormitoryList</url-pattern>
+    </servlet-mapping>
+
 </web-app>

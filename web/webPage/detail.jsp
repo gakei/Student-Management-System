@@ -28,10 +28,12 @@
                 <input type="text" name="name" autocomplete="off" class="layui-input" id="name">
             </div>
         </div>
-        <div class="layui-inline">
-            <label class="layui-form-label">性别</label>
-            <div class="layui-input-inline">
-                <input type="text" name="sex" autocomplete="off" class="layui-input" id="sex">
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">单选框</label>
+            <div class="layui-input-block" id="sex">
+                <input type="radio" name="sex" value="男" title="男" checked="">
+                <input type="radio" name="sex" value="女" title="女">
             </div>
         </div>
         <div class="layui-inline">
@@ -40,16 +42,28 @@
                 <input type="text" name="age" autocomplete="off" class="layui-input" id="age">
             </div>
         </div>
-        <div class="layui-inline">
+        <div class="layui-form-item">
             <label class="layui-form-label">年级</label>
             <div class="layui-input-inline">
-                <input type="text" name="grade" autocomplete="off" class="layui-input" id="grade">
+                <select name="grade" id="grade">
+                    <option value="">请选择年级</option>
+                    <option value="1">大一</option>
+                    <option value="2">大二</option>
+                    <option value="3">大三</option>
+                    <option value="4">大四</option>
+                </select>
             </div>
         </div>
-        <div class="layui-inline">
-            <label class="layui-form-label">班别</label>
+        <div class="layui-form-item">
+            <label class="layui-form-label">班级</label>
             <div class="layui-input-inline">
-                <input type="text" name="classNo" autocomplete="off" class="layui-input" id="classNo">
+                <select name="classNo" id="classNo">
+                    <option value="">请选择班级</option>
+                    <option value="计科一班">计科一班</option>
+                    <option value="计科一班">计科二班</option>
+                    <option value="计科一班">计科三班</option>
+                    <option value="计科一班">计科四班</option>
+                </select>
             </div>
         </div>
         <div class="layui-inline">
@@ -121,7 +135,8 @@
 
         //监听提交
         form.on('submit(demo1)', function(data){
-            console.log($("#name").val());
+            console.log($("#sex").val());
+            console.log($('#classNo').val());
             $.post(
                 '/EditStudentInfo',
                 {
@@ -129,8 +144,8 @@
                     name: $("#name").val(),
                     sex: $("#sex").val(),
                     age: $("#age").val(),
-                    grade: $("#grade").val(),
-                    classNo: $("#classNo").val(),
+                    grade: $('#grade').val(),
+                    classNo: $('#classNo').val(),
                     dormitoryNo: $("#dormitoryNo").val()
                 },
                 function(data, status) {

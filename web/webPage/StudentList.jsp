@@ -31,7 +31,7 @@
                 <th lay-data="{type:'checkbox', fixed: 'left'}"></th>
                 <th lay-data="{field:'id', width:80, sort: true, fixed: true}">学号</th>
                 <th lay-data="{field:'grade', width:80}">年级</th>
-                <th lay-data="{field:'classNo', width:80}">班别</th>
+                <th lay-data="{field:'classNo', width:100}">班别</th>
                 <th lay-data="{field:'name', width:80}">名字</th>
                 <th lay-data="{field:'sex', width:80, sort: true}">性别</th>
                 <th lay-data="{field:'age', width:80}">年龄</th>
@@ -104,14 +104,16 @@
                     no: function () {
                     },
                     success:function(layero, index){
+/*                        // 获取子页面的iframe
+                        var iframe = window['layui-layer-iframe' + index];
+                        // 向子页面的全局函数child传参
+                        iframe.child(data.grade, data.classNo, data.sex);*/
+
                         var body=layer.getChildFrame('body',index);//少了这个是不能从父页面向子页面传值的
                         //获取子页面的元素，进行数据渲染
                         body.contents().find("#id").val(data.id);
                         body.contents().find("#name").val(data.name);
-                        body.contents().find("#sex").val(data.sex);
                         body.contents().find("#age").val(data.age);
-                        body.contents().find("#grade").val(data.grade);
-                        body.contents().find("#classNo").val(data.classNo);
                         body.contents().find("#dormitoryNo").val(data.dormitoryNo);
                     }
                 });

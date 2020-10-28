@@ -32,12 +32,8 @@
             <li class="layui-nav-item">
                 <a href="javascript:;">
                     <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-                    贤心
+                    <%out.print(session.getAttribute("user"));%>
                 </a>
-                <dl class="layui-nav-child">
-                    <dd><a href="">基本资料</a></dd>
-                    <dd><a href="">安全设置</a></dd>
-                </dl>
             </li>
             <li class="layui-nav-item"><a href="" id="Logout">退了</a></li>
         </ul>
@@ -51,14 +47,13 @@
                     <a class="" href="javascript:;">宿舍信息管理</a>
                     <dl class="layui-nav-child">
                         <dd><a href="javascript:;" id="dormitoryList">宿舍列表</a></dd>
-                        <dd><a href="javascript:;" id="InputStuInfo">录入学生信息</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
                     <a href="javascript:;">学生住宿信息管理</a>
                     <dl class="layui-nav-child">
                         <dd><a href="javascript:;" id="studentList">学生信息列表</a></dd>
-                        <dd><a href="javascript:;" id="addReader">添加学生信息</a></dd>
+                        <dd><a href="javascript:;" id="InputStuInfo">录入学生信息</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item"><a href="">云市场</a></li>
@@ -141,6 +136,10 @@
             $("#result").append("<iframe src=\"inputStuInfo.jsp\" width=\"100%\" height=\"100%\" frameborder=\"0\" scrolling=\"no\"></iframe>");
         })
     });
+    $("#dormitoryList").on("click", function () {
+        $("#result").html("");
+        $("#result").append("<iframe src=\"dormitoryList.jsp\" width=\"100%\" height=\"100%\" frameborder=\"0\" scrolling=\"no\"></iframe>");
+    })
     $(function () {
         $("#studentList").on("click", function () {
             $("#result").html("");

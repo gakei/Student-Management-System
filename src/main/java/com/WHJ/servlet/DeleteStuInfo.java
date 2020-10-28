@@ -13,6 +13,8 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.WHJ.util.JsonUtil.packAsJson;
+
 public class DeleteStuInfo extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -35,13 +37,5 @@ public class DeleteStuInfo extends HttpServlet {
             packAsJson(resp, map);
             e.printStackTrace();
         }
-    }
-
-    private void packAsJson(HttpServletResponse resp, Map<String, Integer> map) throws IOException {
-        String jsonString = JSON.toJSONString(map);
-        resp.setCharacterEncoding("utf-8");
-        resp.setContentType("application/json;charset=utf-8");
-        /*返回数据*/
-        resp.getWriter().write(jsonString);
     }
 }

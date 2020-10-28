@@ -13,6 +13,8 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.WHJ.util.JsonUtil.packAsJson;
+
 public class EditStudentInfo extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -36,26 +38,6 @@ public class EditStudentInfo extends HttpServlet {
             map.put("responseCode", 3);
             packAsJson(resp, map);
             return;
-        }
-
-        switch (grade[0]) {
-            case "大一":
-                grade[0] = "1";
-                break;
-            case "大二":
-                grade[0] = "2";
-                break;
-            case "大三":
-                grade[0] = "3";
-                break;
-            case "大四":
-                grade[0] = "4";
-                break;
-            default:
-                //3是用户输入有误
-                map.put("responseCode", 3);
-                packAsJson(resp, map);
-                return;
         }
 
         String targetSql = "update student set name = ?, sex = ?, age = ?, " +
@@ -84,13 +66,5 @@ public class EditStudentInfo extends HttpServlet {
             map.put("responseCode", 3);
             packAsJson(resp, map);
         }
-    }
-
-    private void packAsJson(HttpServletResponse resp, Map<String, Integer> map) throws IOException {
-        String jsonString = JSON.toJSONString(map);
-        resp.setCharacterEncoding("utf-8");
-        resp.setContentType("application/json;charset=utf-8");
-        /*返回数据*/
-        resp.getWriter().write(jsonString);
     }
 }
