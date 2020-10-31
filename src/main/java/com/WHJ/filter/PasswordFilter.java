@@ -61,6 +61,12 @@ public class PasswordFilter implements Filter {
             return;
         }
 
+        if (!dbUsername.equals(username)) {
+            request.setAttribute("msg", "密码或用户名不正确！！！");
+            request.getRequestDispatcher("/index.jsp").forward(request, response);
+            return;
+        }
+
         if (req.getSession().getAttribute("user") == null) {
             HttpSession session = req.getSession();
             session.setAttribute("user", username);

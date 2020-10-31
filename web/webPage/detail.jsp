@@ -135,14 +135,14 @@
 
         //监听提交
         form.on('submit(demo1)', function(data){
-            console.log($("#sex").val());
+            console.log($("input[name='sex']:checked").val());
             console.log($('#classNo').val());
             $.post(
                 '/EditStudentInfo',
                 {
                     id: $("#id").val(),
                     name: $("#name").val(),
-                    sex: $("#sex").val(),
+                    sex: $("input[name='sex']:checked").val(),
                     age: $("#age").val(),
                     grade: $('#grade').val(),
                     classNo: $('#classNo').val(),
