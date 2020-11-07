@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>layout 后台大布局 - Layui</title>
+    <title>学生信息管理系统</title>
     <link rel="stylesheet" href="../layui/css/layui.css">
 </head>
 
@@ -16,7 +16,7 @@
         <div class="layui-logo">学生信息管理系统</div>
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <ul class="layui-nav layui-layout-left">
-            <li class="layui-nav-item"><a href="">控制台</a></li>
+            <%--<li class="layui-nav-item"><a href="">控制台</a></li>
             <li class="layui-nav-item"><a href="">商品管理</a></li>
             <li class="layui-nav-item"><a href="">用户</a></li>
             <li class="layui-nav-item">
@@ -26,7 +26,7 @@
                     <dd><a href="">消息管理</a></dd>
                     <dd><a href="">授权管理</a></dd>
                 </dl>
-            </li>
+            </li>--%>
         </ul>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
@@ -56,8 +56,14 @@
                         <dd><a href="javascript:;" id="InputStuInfo">录入学生信息</a></dd>
                     </dl>
                 </li>
-                <li class="layui-nav-item"><a href="">云市场</a></li>
-                <li class="layui-nav-item"><a href="">发布商品</a></li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;" id="inputBreakRulesRecord">输入学生违规信息</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;" id="searchStuInfo">搜索学生信息</a>
+                </li>
+                <%--<li class="layui-nav-item"><a href="">云市场</a></li>
+                <li class="layui-nav-item"><a href="">发布商品</a></li>--%>
             </ul>
         </div>
     </div>
@@ -146,6 +152,17 @@
             $("#result").append("<iframe src=\"StudentList.jsp\" width=\"100%\" height=\"100%\" frameborder=\"0\" scrolling=\"no\"></iframe>")
         })
     });
+
+    $("#searchStuInfo").on("click", function () {
+        $("#result").html("");
+        $("#result").append("<iframe src=\"searchStuInfo.jsp\" width=\"100%\" height=\"100%\" frameborder=\"0\" scrolling=\"no\"></iframe>")
+    });
+
+    $("#inputBreakRulesRecord").on("click", function () {
+        $("#result").html("");
+        $("#result").append("<iframe src=\"inputBreakRulesRecord.jsp\" width=\"100%\" height=\"100%\" frameborder=\"0\" scrolling=\"no\"></iframe>")
+    });
+
     $("#Logout").on("click", function () {
         $.ajax({
             url: "/Logout",

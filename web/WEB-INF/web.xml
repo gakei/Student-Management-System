@@ -99,4 +99,28 @@
         <url-pattern>/DormitoryList</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <!-- 类名 -->
+        <servlet-name>SearchStuInfo</servlet-name>
+        <!-- 所在的包 -->
+        <servlet-class>com.WHJ.servlet.SearchStuInfo</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchStuInfo</servlet-name>
+        <!-- 访问的网址 -->
+        <url-pattern>/SearchStuInfo</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <!-- 类名 -->
+        <servlet-name>InputRulesRecord</servlet-name>
+        <!-- 所在的包 -->
+        <servlet-class>com.WHJ.servlet.InputRulesRecord</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InputRulesRecord</servlet-name>
+        <!-- 访问的网址 -->
+        <url-pattern>/InputRulesRecord</url-pattern>
+    </servlet-mapping>
+
 </web-app>

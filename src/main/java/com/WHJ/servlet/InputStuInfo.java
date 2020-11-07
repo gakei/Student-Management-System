@@ -61,13 +61,15 @@ public class InputStuInfo extends HttpServlet {
             prepareStatement1.setString(1, dormitoryNo[0]);
             ResultSet resultSet = prepareStatement1.executeQuery();
 
-            if (resultSet == null) {
+            assert resultSet != null;
+            while (!resultSet.next()) {
                 //responseCode为2，没有查到这个宿舍号
                 responseMap.put("responseCode", 2);
                 packAsJson(resp, responseMap);
+                req.getRequestDispatcher( "/notExitDormitoryNo.jsp").forward(req, resp);
+                return;
             }
 
-            assert resultSet != null;
             int dormitoryMemNum = 0;
             int incRs = 0;
             while (resultSet.next()) {
@@ -89,9 +91,14 @@ public class InputStuInfo extends HttpServlet {
             if (rs != 0 &&  incRs!= 0) {
                 req.setAttribute( "isSuccess ", true);
                 req.getRequestDispatcher( "/success.jsp").forward(req, resp);
+                return;
             }
             req.getRequestDispatcher( "/failure.jsp").forward(req, resp);
-        } catch (SQLException | ClassNotFoundException | NumberFormatException e) {
+        } catch (SQLIntegrityConstraintViolationException e) {
+            e.printStackTrace();
+            req.getRequestDispatcher( "/dubName.jsp").forward(req, resp);
+        }
+        catch (SQLException | ClassNotFoundException | NumberFormatException e) {
             e.printStackTrace();
             req.getRequestDispatcher( "/failure.jsp").forward(req, resp);
         }

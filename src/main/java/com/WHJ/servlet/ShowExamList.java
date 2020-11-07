@@ -1,7 +1,6 @@
 package com.WHJ.servlet;
 
 import com.WHJ.entity.Examination;
-import com.WHJ.entity.Student;
 import com.WHJ.util.JDBCConnector;
 import com.alibaba.fastjson.JSON;
 
